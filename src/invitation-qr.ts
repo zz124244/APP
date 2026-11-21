@@ -1,0 +1,1 @@
+export async function invitationQr(url:string){const QRCode=(await import('qrcode')).default;return QRCode.toDataURL(url,{errorCorrectionLevel:'H',margin:4,width:576,color:{dark:'#006948',light:'#ffffff'}})}
