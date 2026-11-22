@@ -1,0 +1,4 @@
+#app .reference-lottery #wheel>div[style].pointer-events-none{top:0}
+.reference-lottery #wheel>div[style].origin-center{right:0}
+.reference-lottery #wheel>div[style].flex-col{bottom:0}
+.reference-lottery #wheel>div[style].items-center{left:0;transform-origin:center center}

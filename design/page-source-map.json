@@ -1,0 +1,261 @@
+{
+  "login": {
+    "source": "_23/code.html",
+    "components": [
+      "App.vue"
+    ],
+    "sha256": "32a1f7043b67fa6954dbaab6fec169f194115858865959b738224f310c63d8dc"
+  },
+  "deposit": {
+    "source": "usdt_2/code.html",
+    "components": [
+      "DepositPage.vue"
+    ],
+    "sha256": "f5ccf67b564783273be273a5cf4439c75f5546432d3146c87dfdd3ea2bf3e457"
+  },
+  "history": {
+    "source": "_4/code.html",
+    "components": [
+      "DepositPage.vue"
+    ],
+    "sha256": "4bb937ec8787b22b219c9d1c03e4439cc7817e0c54631a4a08f693488805cd92"
+  },
+  "support": {
+    "source": "_5/code.html",
+    "components": [
+      "SupportPage.vue",
+      "RecoveryPage.vue"
+    ],
+    "sha256": "63e317043e5c576373ab31953d42886cf8fc2b1e0f0a2e32b9460db64de4be8c",
+    "adaptation": "Preserve _5 DOM and theme. Per confirmed request, omit loading prose while opening; keep true error, staffed status, empty state and disabled send safeguards."
+  },
+  "orders": {
+    "source": "_7/code.html",
+    "components": [
+      "OrdersPage.vue"
+    ],
+    "sha256": "49e60188b00d591252b85dbe65321e936448aa13030b64e3b32811afcc91f20d"
+  },
+  "overview": {
+    "source": "_14/code.html",
+    "components": [
+      "ProductPage.vue",
+      "ProductCard.vue"
+    ],
+    "sha256": "3d24a7264802b11eac8664414ea4ae5c56fad94a5ac57b15d6fe04539c7f28bf"
+  },
+  "novice": {
+    "source": "_15/code.html",
+    "components": [
+      "ProductPage.vue",
+      "ProductCard.vue"
+    ],
+    "sha256": "871519bf7e5c508f1ebf9a5aead66e57a00edce657b18423d68557127cdf8b36"
+  },
+  "fixed": {
+    "source": "_19/code.html",
+    "components": [
+      "ProductPage.vue",
+      "ProductCard.vue"
+    ],
+    "sha256": "621097b9b36bbb8de0e18f824938b70ca79067d1a7c911dc6b0b4be8cf2973ac"
+  },
+  "vip": {
+    "source": "vip/code.html",
+    "components": [
+      "ProductPage.vue",
+      "ProductCard.vue"
+    ],
+    "sha256": "a262d92e1badb1def2185f93d8ca513db7de7b393d1c51328d5e1cb75960e1ed"
+  },
+  "benefit": {
+    "source": "_20/code.html",
+    "components": [
+      "ProductPage.vue",
+      "ProductCard.vue"
+    ],
+    "sha256": "e33ebe194bc94746f1c21e40896fe5c8f67d896fb678c9c506ebe72ec70ed31d"
+  },
+  "profile": {
+    "source": "_16/code.html",
+    "components": [
+      "WalletPage.vue"
+    ],
+    "sha256": "a2b60359e57dd135f7529360a31efca524e8ff02972f712abb5a3cd16ef05679"
+  },
+  "rollover": {
+    "source": "usdt_1/code.html",
+    "components": [
+      "RolloverPage.vue"
+    ],
+    "sha256": "88a7a1762af1aba209727b7673fba85c5e00927d66a34e7b5cbab3f6984f8e8e",
+    "adaptation": "No standalone original page: reuse original amount/input/notice and purchase-success components; internal-transfer fields only."
+  },
+  "withdrawal": {
+    "source": "usdt_1/code.html",
+    "components": [
+      "WithdrawalPage.vue"
+    ],
+    "sha256": "88a7a1762af1aba209727b7673fba85c5e00927d66a34e7b5cbab3f6984f8e8e"
+  },
+  "withdrawal-history": {
+    "source": "_3/code.html",
+    "components": [
+      "WithdrawalPage.vue"
+    ],
+    "sha256": "db0ff0467dca9fc6938f57d3c3e41a53a582607ae56e53890831247d9f012218"
+  },
+  "identity": {
+    "source": "_11/code.html",
+    "components": [
+      "IdentityPage.vue"
+    ],
+    "sha256": "6fc5769562e2a482a6b7ef6bb0e5ef1ce46c82069bcc256465ac1895168bf713"
+  },
+  "transfer": {
+    "source": "_25/code.html",
+    "components": [
+      "TransferPage.vue"
+    ],
+    "sha256": "d0f645d90ab27de10447bc842a26a0de310be84513886a5d0a3cceb8b18a3b54",
+    "adaptation": "Bind real transfer data; UID required; minimum 100; per-transfer PIN; original modal and keypad; recover states. Account entry reuses adjacent original account row because source homepage entry is not implemented yet."
+  },
+  "entries": {
+    "source": "_1/code.html",
+    "components": [
+      "EntriesPage.vue"
+    ],
+    "sha256": "2d34b0cdf65a9f91896f297106836d2946d19e8dac451529b0b5291afaeb08d6",
+    "adaptation": "Original eleven card subtrees retained; render only real events. No prototype hidden filter/export/toast; read-only cards, server pagination/retry states, neutral balance movements. Existing principal/transfer structures reused for actual deposit/withdrawal categories absent from the prototype."
+  },
+  "team": {
+    "source": "_10/code.html",
+    "components": [
+      "TeamPage.vue",
+      "TeamMemberCard.vue"
+    ],
+    "sha256": "6b9d75e640d27fc15ffd9577157d62d2bc32299203fc74ec3c13cb551ba29b30",
+    "adaptation": "Original DOM and page theme; real data, private three-level pagination, truthful clipboard and local QR. Account invitation entry reuses adjacent original menu row."
+  },
+  "invitation": {
+    "source": "_24/code.html",
+    "components": [
+      "InvitationPage.vue"
+    ],
+    "sha256": "332e7840a6c5febe3a8dc808f325db9736a534b1c64feffb34bef7a22b3843c1",
+    "adaptation": "Original DOM and page theme; real data, private three-level pagination, truthful clipboard and local QR. Account invitation entry reuses adjacent original menu row."
+  },
+  "password": {
+    "source": "_2/code.html",
+    "components": [
+      "PasswordPage.vue",
+      "ForcedPasswordPage.vue"
+    ],
+    "sha256": "c190377b0f8e340bedae103365aafc8c9a625deda398bb3285d3776b83e778fe",
+    "adaptation": "Original six input subtrees/two panes/theme. Remove prototype errors, SMS and fake success; real validation, setup state, private key-only recovery and existing support. Server-owned credential rules; no reset bypass."
+  },
+  "recovery": {
+    "source": "_23/code.html",
+    "components": [
+      "RecoveryPage.vue"
+    ],
+    "sha256": "32a1f7043b67fa6954dbaab6fec169f194115858865959b738224f310c63d8dc",
+    "adaptation": "No separate original B03: reuse login phone form classes and SupportPage original conversation. Necessary case status and credential card use original bubble/input/button structures. No account data or stored temporary password."
+  },
+  "task": {
+    "source": "_26/code.html",
+    "components": [
+      "TaskPage.vue"
+    ],
+    "sha256": "6e85a4527a64ca9eea84b2b91a2d2129cbbf80c55a3c61612d7387c44c8d2277",
+    "adaptation": "Original VIP achieved/locked and referral card DOM, header, brand and own theme. Real snapshot rewards, seven languages and persistent id/key-only recovery. Remove unreachable hidden prototype contract/risk claims and fake scripts; no daily benefit summary."
+  },
+  "checkin": {
+    "source": "_22/code.html",
+    "components": [
+      "CheckinPage.vue"
+    ],
+    "sha256": "2a2c58a189493f90a005891599468d7964db736825917d47b5396baa125dfbdc",
+    "adaptation": "Direct original header/cards/grid or wheel/modal and own theme. Real server state, stable command recovery, seven languages; remove prototype scripts and unsafe demonstration claims. Dynamic persisted wheel sectors and manual result closing; original small viewport corrections."
+  },
+  "lottery": {
+    "source": "6/code.html",
+    "components": [
+      "LotteryPage.vue"
+    ],
+    "sha256": "d6c61f1ef3489f213b1ae0f165614a2dec89ef5aa957bd698f7ea55b2b6a5501",
+    "adaptation": "Direct original header/cards/grid or wheel/modal and own theme. Real server state, stable command recovery, seven languages; remove prototype scripts and unsafe demonstration claims. Dynamic persisted wheel sectors and manual result closing; original small viewport corrections."
+  },
+  "mall": {
+    "source": "_6/code.html",
+    "components": [
+      "MallPage.vue"
+    ],
+    "sha256": "1e1f1c042d80ea8f03356617536cb2563b9a8719c7c7e3f0015e29183d230f7c",
+    "adaptation": "真实商品图片与循环；移除虚拟券、原型脚本和空分类；增加普通确认、持久化恢复与客服入口"
+  },
+  "address": {
+    "source": "_9/code.html",
+    "components": [
+      "AddressPage.vue"
+    ],
+    "sha256": "e00192c672f1b61169569a3ab672448dde3e519c03f4976e685104dde3aef8c5",
+    "adaptation": "原列表DOM/classes/theme；四字段新增编辑为已确认补充，原_9无表单，复用_11输入子树（来源哈希另记）；唯一地址自动默认、持久化仅操作元数据、服务端恢复栅栏、七语言与小屏安全区域。",
+    "supplemental_source": {
+      "source": "_11/code.html",
+      "sha256": "6fc5769562e2a482a6b7ef6bb0e5ef1ce46c82069bcc256465ac1895168bf713"
+    }
+  },
+  "terms": {
+    "source": "_8/code.html",
+    "components": [
+      "ContentDocumentPage.vue"
+    ],
+    "sha256": "689c1229c9cc7f899960404e9ba4dc000d20cb61c60b67b21a2ff667a404612a",
+    "adaptation": "直接原header/main/article/段落主题；真实纯文本插值与受认证blob配图，移除原型脚本/假声明/材料角标。terms补相邻原菜单结构进入compliance，首页未实现前的可达入口；无签署同意、图片放大或前台版本号。"
+  },
+  "compliance": {
+    "source": "_18/code.html",
+    "components": [
+      "ContentDocumentPage.vue"
+    ],
+    "sha256": "f15dc173258480b286716db4eca4993a5b9c9be7139d97fea0fe224c6018d251",
+    "adaptation": "直接原header/main/article/段落主题；真实纯文本插值与受认证blob配图，移除原型脚本/假声明/材料角标。terms补相邻原菜单结构进入compliance，首页未实现前的可达入口；无签署同意、图片放大或前台版本号。"
+  },
+  "home": {
+    "source": "_17/code.html",
+    "components": [
+      "ContentHubPage.vue",
+      "EditorialVideo.vue"
+    ],
+    "sha256": "9ebdc645c68a5deaee97b9f96f8741a87abacac590329b2db05ff66a85f049ab",
+    "adaptation": "保留原DOM/classes/theme，真实发布内容/分页/下架状态；移除原型脚本、样例及虚构阅读点赞；固定七语言，详情返回重核内容并恢复栏目位置，原卡片内视频播放。"
+  },
+  "community": {
+    "source": "_13/code.html",
+    "components": [
+      "ContentHubPage.vue",
+      "EditorialVideo.vue"
+    ],
+    "sha256": "3b24110e66f49c49a6b460d91bd562383c0c324ad95b7afec7c2c788fe026d79",
+    "adaptation": "保留原DOM/classes/theme，真实发布内容/分页/下架状态；移除原型脚本、样例及虚构阅读点赞；固定七语言，详情返回重核内容并恢复栏目位置，原卡片内视频播放。"
+  },
+  "article-list": {
+    "source": "_21/code.html",
+    "components": [
+      "ContentHubPage.vue",
+      "EditorialVideo.vue"
+    ],
+    "sha256": "8d76e80ba746aa515e55d00966b500574b38e7134df9e5876251ec1e12f45858",
+    "adaptation": "保留原DOM/classes/theme，真实发布内容/分页/下架状态；移除原型脚本、样例及虚构阅读点赞；固定七语言，详情返回重核内容并恢复栏目位置，原卡片内视频播放。"
+  },
+  "article-detail": {
+    "source": "_12/code.html",
+    "components": [
+      "ContentHubPage.vue",
+      "EditorialVideo.vue"
+    ],
+    "sha256": "b64a5fa251bd50ce001bd9a49fe8606a12a3a9cc8e79f29206bb6ad6a8bc3029",
+    "adaptation": "保留原DOM/classes/theme，真实发布内容/分页/下架状态；移除原型脚本、样例及虚构阅读点赞；固定七语言，详情返回重核内容并恢复栏目位置，原卡片内视频播放。"
+  }
+}

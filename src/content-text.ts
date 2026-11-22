@@ -1,0 +1,5 @@
+import type {Locale} from './i18n'
+const rows={terms:["用户条例","User terms","利用規約","이용 약관","Conditions d’utilisation","Nutzungsbedingungen","用戶條例"],compliance:["合规与安全","Compliance and security","コンプライアンスと安全","규정 준수 및 보안","Conformité et sécurité","Compliance und Sicherheit","合規與安全"],back:["返回","Back","戻る","뒤로","Retour","Zurück","返回"],loading:["正在读取…","Loading…","読み込み中…","불러오는 중…","Chargement…","Wird geladen…","正在讀取…"],empty:["资料待完善","Materials are not yet available","資料は準備中です","자료 준비 중입니다","Documents à venir","Materialien noch nicht verfügbar","資料待完善"],error:["读取失败，请重试","Could not load. Please retry.","読み込めません。再試行してください","불러오지 못했습니다. 다시 시도하세요","Chargement impossible. Réessayez.","Laden fehlgeschlagen. Bitte erneut versuchen.","讀取失敗，請重試"],retry:["重试","Retry","再試行","다시 시도","Réessayer","Erneut versuchen","重試"],imageError:["图片暂不可用","Image unavailable","画像を表示できません","이미지를 사용할 수 없습니다","Image indisponible","Bild nicht verfügbar","圖片暫不可用"]}
+export type ContentTextKey=keyof typeof rows
+const positions:Record<Locale,number>={'zh-CN':0,en:1,ja:2,ko:3,fr:4,de:5,'zh-TW':6}
+export const contentText=(locale:Locale,key:ContentTextKey)=>rows[key][positions[locale]]!
