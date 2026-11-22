@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="104" viewBox="0 0 96 104" role="img" aria-labelledby="vip5-title">
+<title id="vip5-title">VIP5 王者</title>
+<defs><linearGradient id="vip5-metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5edff"/><stop offset=".48" stop-color="#b5a0e6"/><stop offset="1" stop-color="#f5edff"/></linearGradient></defs>
+<path d="M48 5 82 18v28c0 24-15 42-34 52C29 88 14 70 14 46V18Z" fill="url(#vip5-metal)" stroke="#67459c" stroke-width="2"/>
+<path d="M48 12 75 22v24c0 19-11 34-27 44-16-10-27-25-27-44V22Z" fill="white" fill-opacity=".42" stroke="white" stroke-opacity=".88" stroke-width="1.5"/>
+<path d="M48 15 72 24v20c0 16-8 29-24 40Z" fill="#67459c" fill-opacity=".045"/>
+<g fill="#67459c" stroke="#67459c" stroke-width="1.5" stroke-linejoin="round"><path d="m27 36 12 9 9-17 9 17 12-9-6 25H33Z" fill="#f5ce7a" stroke="#90662a"/><path d="M34 66h28" stroke="#90662a" stroke-width="4" stroke-linecap="round"/><circle cx="27" cy="33" r="2.5" fill="#f5ce7a"/><circle cx="48" cy="25" r="2.5" fill="#f5ce7a"/><circle cx="69" cy="33" r="2.5" fill="#f5ce7a"/></g>
+<circle cx="34" cy="79" r="1.8" fill="#67459c"/><circle cx="41" cy="79" r="1.8" fill="#67459c"/><circle cx="48" cy="79" r="1.8" fill="#67459c"/><circle cx="55" cy="79" r="1.8" fill="#67459c"/><circle cx="62" cy="79" r="1.8" fill="#67459c"/></svg>

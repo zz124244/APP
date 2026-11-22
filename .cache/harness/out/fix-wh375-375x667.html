@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>frame</title>
+<style>html,body{margin:0;padding:0;background:#222}iframe{border:0;display:block;background:#fff}</style>
+</head>
+<body>
+<script>
+  var q = new URLSearchParams(location.search)
+  var w = parseInt(q.get('w') || '390', 10), h = parseInt(q.get('h') || '844', 10), flow = q.get('flow') || 'login'
+  var scale = Math.min(1, (window.innerHeight - 4) / h)
+  var f = document.createElement('iframe')
+  f.width = w; f.height = h
+  f.style.width = w + 'px'; f.style.height = h + 'px'
+  f.style.transformOrigin = 'top left'
+  f.style.transform = 'scale(' + scale + ')'
+  f.src = '/index.html?flow=' + encodeURIComponent(flow)
+  document.body.appendChild(f)
+  window.addEventListener('message', function (e) {
+    var pre = document.getElementById('__audit')
+    if (!pre) { pre = document.createElement('pre'); pre.id = '__audit'; document.body.appendChild(pre) }
+    pre.textContent = e.data
+  })
+</script><iframe width="375" height="667" src="/index.html?flow=withdrawHistory" style="width: 375px; height: 667px; transform-origin: left top; transform: scale(0.637181);"></iframe>
+
+
+<pre id="__audit">{"vw":375,"vh":667,"docScrollW":375,"docScrollH":928,"bodyScrollW":375,"hOverflow":0,"vOverflow":261,"offenders":[],"cutText":[],"flow":"withdrawHistory","steps":["clicked:.startup-enter","navReady=true","tab:我的","clicked:提现记录"],"buttons":["重新加载"]}</pre></body></html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>frame</title>
+<style>html,body{margin:0;padding:0;background:#222}iframe{border:0;display:block;background:#fff}</style>
+</head>
+<body>
+<script>
+  var q = new URLSearchParams(location.search)
+  var w = parseInt(q.get('w') || '390', 10), h = parseInt(q.get('h') || '844', 10), flow = q.get('flow') || 'login'
+  var scale = Math.min(1, (window.innerHeight - 4) / h)
+  var f = document.createElement('iframe')
+  f.width = w; f.height = h
+  f.style.width = w + 'px'; f.style.height = h + 'px'
+  f.style.transformOrigin = 'top left'
+  f.style.transform = 'scale(' + scale + ')'
+  f.src = '/index.html?flow=' + encodeURIComponent(flow)
+  document.body.appendChild(f)
+  window.addEventListener('message', function (e) {
+    var pre = document.getElementById('__audit')
+    if (!pre) { pre = document.createElement('pre'); pre.id = '__audit'; document.body.appendChild(pre) }
+    pre.textContent = e.data
+  })
+</script><iframe width="430" height="932" src="/index.html?flow=wallet" style="width: 430px; height: 932px; transform-origin: left top; transform: scale(0.456009);"></iframe>
+
+
+<pre id="__audit">{"vw":430,"vh":932,"docScrollW":430,"docScrollH":1462,"bodyScrollW":430,"hOverflow":0,"vOverflow":530,"offenders":[{"s":"div.app-scroll-layer&gt;div&gt;div.profile-page&gt;main.flex.flex-col.relative&gt;div.flex.flex-col.w-full&gt;div.relative.overflow-hidden.rounded-xl","cls":"relative overflow-hidden rounded-xl bg-white p-space-lg border border-slate-200/","l":16,"r":414,"w":398,"rightOver":-16,"leftOver":-16,"innerX":48,"pos":"relative","scrollable":false,"txt":"注册号码：13900001234UID:U1000001"},{"s":"div&gt;div.profile-page&gt;main.flex.flex-col.relative&gt;div.flex.flex-col.w-full&gt;div.relative.overflow-hidden.rounded-xl&gt;div.absolute.-top-12.-right-12","cls":"absolute -top-12 -right-12 w-44 h-44 rounded-full bg-emerald-500/5 blur-3xl poin","l":285,"r":461,"w":176,"rightOver":31,"leftOver":-285,"innerX":0,"pos":"absolute","scrollable":false,"txt":""},{"s":"div.flex.flex-col.w-full&gt;div.relative.overflow-hidden.rounded-xl&gt;div.relative.z-10.flex&gt;div.flex.items-center.justify-between&gt;div.flex.items-center.gap-space-md&gt;div.relative.shrink-0","cls":"relative shrink-0","l":37,"r":93,"w":56,"rightOver":-337,"leftOver":-37,"innerX":4,"pos":"relative","scrollable":false,"txt":""},{"s":"button#toggle-asset-visibility","cls":"text-slate-400 hover:text-slate-700 flex items-center reference-hit-target","l":111,"r":127,"w":16,"rightOver":-302.7,"leftOver":-111.3,"innerX":14,"pos":"relative","scrollable":false,"txt":""}],"cutText":[],"flow":"wallet","steps":["clicked:.startup-enter","navReady=true navTexts=[\"home:首页\",\"invest:投资\",\"community:社区\",\"portfolio:我的\"]","clicked nav:我的"]}</pre></body></html>

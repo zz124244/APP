@@ -1,0 +1,7 @@
+/* verification copy of the source-layout.css overflow guard (harness only) */
+.reference-surface .font-label-numeric-lg,.reference-surface .font-label-numeric-md,.reference-surface .font-label-numeric-sm,
+.profile-page .font-label-numeric-lg,.profile-page .font-label-numeric-md,.profile-page .font-label-numeric-sm{min-width:0;overflow-wrap:anywhere;word-wrap:break-word}
+.reference-surface [data-original-withdrawal] .flex-col,.reference-surface [data-original-entry] .flex-col,.reference-surface [data-original-order] .flex-col,.reference-surface [data-original-transfer-record] .flex-col,.reference-surface [data-original-member] .flex-col{min-width:0;max-width:100%}
+.reference-surface [data-original-withdrawal] .flex-col>*,.reference-surface [data-original-entry] .flex-col>*,.reference-surface [data-original-order] .flex-col>*,.reference-surface [data-original-transfer-record] .flex-col>*,.reference-surface [data-original-member] .flex-col>*{min-width:0;max-width:100%}
+.reference-surface [data-original-withdrawal] .select-all,.reference-surface [data-original-entry] .select-all,.reference-surface [data-original-order] .select-all,.reference-surface [data-original-transfer-record] .select-all,.reference-surface [data-original-member] .select-all{display:block;min-width:0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* support landscape floor: never taller than the real viewport */.reference-support{min-height:min(480px,100vh);min-height:min(480px,100dvh)}

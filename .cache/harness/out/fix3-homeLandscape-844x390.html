@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>frame</title>
+<style>html,body{margin:0;padding:0;background:#222}iframe{border:0;display:block;background:#fff}</style>
+</head>
+<body>
+<script>
+  var q = new URLSearchParams(location.search)
+  var w = parseInt(q.get('w') || '390', 10), h = parseInt(q.get('h') || '844', 10), flow = q.get('flow') || 'login'
+  var scale = Math.min(1, (window.innerHeight - 4) / h)
+  var f = document.createElement('iframe')
+  f.width = w; f.height = h
+  f.style.width = w + 'px'; f.style.height = h + 'px'
+  f.style.transformOrigin = 'top left'
+  f.style.transform = 'scale(' + scale + ')'
+  f.src = '/index.html?flow=' + encodeURIComponent(flow)
+  document.body.appendChild(f)
+  window.addEventListener('message', function (e) {
+    var pre = document.getElementById('__audit')
+    if (!pre) { pre = document.createElement('pre'); pre.id = '__audit'; document.body.appendChild(pre) }
+    pre.textContent = e.data
+  })
+</script><iframe width="844" height="390" src="/index.html?flow=home" style="width: 844px; height: 390px; transform-origin: left top; transform: scale(1);"></iframe>
+
+
+<pre id="__audit">{"vw":844,"vh":390,"docScrollW":844,"docScrollH":1262,"bodyScrollW":844,"hOverflow":0,"vOverflow":872,"offenders":[{"s":"div&gt;div.reference-surface.reference-home&gt;main.flex.flex-col.relative&gt;div.flex.flex-col.w-full&gt;div.px-margin.mb-space-sm&gt;div.relative.w-full.rounded-xl","cls":"relative w-full rounded-xl overflow-hidden bg-white border border-slate-200/90 s","l":198,"r":646,"w":448,"rightOver":-198,"leftOver":-198,"innerX":40,"pos":"relative","scrollable":false,"ow":"normal","ws":"normal","wb":"normal","disp":"block","mw":"0px","txt":"加载失败，请重试重试"},{"s":"div&gt;div.reference-surface.reference-home&gt;main.flex.flex-col.relative&gt;div.flex.flex-col.w-full&gt;div.px-margin.mb-space-lg&gt;div.relative.overflow-hidden.rounded-xl","cls":"relative overflow-hidden rounded-xl bg-white border border-slate-200/90 p-space-","l":198,"r":646,"w":448,"rightOver":-198,"leftOver":-198,"innerX":48,"pos":"relative","scrollable":false,"ow":"normal","ws":"normal","wb":"normal","disp":"block","mw":"0px","txt":"合规运营与资金安全保障机构级信任安全保障九合专栏立即查看"}],"cutText":[],"flow":"home","steps":["clicked:.startup-enter","navReady=true"],"buttons":["重试","充值","提现","签到","抽奖","积分商城","用户转账","任务奖励","在线客服","立即查看","更多","平台服务协议更新公告这是","关于收益结算周期的说明这","更多","九合创投完成新一轮产业基","被投企业登陆资本市场","行业观察：长期资本的结构","首页","投资","社区","我的"]}</pre></body></html>

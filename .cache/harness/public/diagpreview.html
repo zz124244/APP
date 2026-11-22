@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>diag preview</title>
+<style>
+  html,body{margin:0;background:#f8f9ff;font-family:-apple-system,system-ui,sans-serif}
+  .fake-page{padding:24px 16px;color:#0b1c30}
+  .fake-page h1{font-size:22px;margin:0 0 8px}
+  .fake-page p{font-size:13px;color:#64748b;margin:0 0 16px}
+  .fake-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 12px rgba(15,23,42,.06)}
+  .fake-card div{height:48px;border-radius:8px;background:#eff4ff;margin-bottom:12px}
+  .fake-card .btn{height:48px;border-radius:8px;background:#d97706}
+  /* ===== 与 DiagOverlay.vue 完全一致 ===== */
+  .diag-backdrop{position:fixed;inset:0;z-index:2147483000;background:#0b1c30e6;display:flex;align-items:flex-end;justify-content:center}
+  .diag-panel{width:100%;max-width:480px;max-height:88dvh;background:#0f172a;color:#e2e8f0;display:flex;flex-direction:column;border-radius:12px 12px 0 0}
+  .diag-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #1e293b;font-size:14px}
+  .diag-head button{min-height:36px;padding:0 12px;border-radius:8px;background:#1e293b;color:#e2e8f0;border:0;font-size:13px}
+  .diag-body{margin:0;padding:12px 14px;overflow:auto;font:400 12px/18px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;flex:1 1 auto;min-height:0}
+  .diag-actions{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #1e293b;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+  .diag-actions button{flex:1;min-height:44px;border-radius:8px;border:0;background:#d97706;color:#fff;font-size:14px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="fake-page">
+  <h1>九合创投</h1>
+  <p>（下面是假的登录页，只是为了让截图看起来像真机）</p>
+  <div class="fake-card"><div></div><div></div><div class="btn"></div></div>
+</div>
+<div class="diag-backdrop">
+  <div class="diag-panel">
+    <div class="diag-head"><b>布局诊断</b><button type="button">关闭</button></div>
+    <pre class="diag-body" id="body">测量中…</pre>
+    <div class="diag-actions"><button type="button">复制全部</button><button type="button">重新测量</button></div>
+  </div>
+</div>
+<script>
+function safeInsets(){
+  const probe=document.createElement('div')
+  probe.style.cssText='position:fixed;top:0;left:0;width:0;height:0;visibility:hidden;pointer-events:none;'
+    +'padding-top:env(safe-area-inset-top,-1px);padding-right:env(safe-area-inset-right,-1px);'
+    +'padding-bottom:env(safe-area-inset-bottom,-1px);padding-left:env(safe-area-inset-left,-1px)'
+  document.body.appendChild(probe)
+  const style=getComputedStyle(probe)
+  const value=[style.paddingTop,style.paddingRight,style.paddingBottom,style.paddingLeft].join(' / ')
+  probe.remove()
+  return value
+}
+function measure(){
+  const root=document.documentElement
+  const vv=window.visualViewport
+  const lines=[
+    ['innerWidth × innerHeight（布局视口，CSS px）',window.innerWidth+' × '+window.innerHeight],
+    ['documentElement.clientWidth（可视宽度）',String(root.clientWidth)],
+    ['screen.width × screen.height',window.screen.width+' × '+window.screen.height],
+    ['devicePixelRatio',String(window.devicePixelRatio)],
+    ['visualViewport.scale（>1 就是被放大了）',vv?vv.scale.toFixed(3):'不支持'],
+    ['visualViewport.width × height',vv?Math.round(vv.width)+' × '+Math.round(vv.height):'—'],
+    ['visualViewport.offsetLeft / offsetTop',vv?Math.round(vv.offsetLeft)+' / '+Math.round(vv.offsetTop):'—'],
+    ['window.scrollX / scrollY（>0 说明整页被横向推走了）',Math.round(window.scrollX)+' / '+Math.round(window.scrollY)],
+    ['documentElement.scrollWidth（>clientWidth 就是有元素更宽）',String(root.scrollWidth)],
+    ['body.scrollWidth',String(document.body.scrollWidth)],
+    ['safe-area-inset top/right/bottom/left',safeInsets()],
+    ['viewport meta',(document.querySelector('meta[name=viewport]')||{}).content||'缺失'],
+    ['页面宽度占视口比例（布局宽/可视宽）',(root.scrollWidth/Math.max(1,root.clientWidth)*100).toFixed(1)+'%'],
+  ]
+  const vw=window.innerWidth, wide=[]
+  document.querySelectorAll('body *').forEach(el=>{
+    const box=el.getBoundingClientRect()
+    if(box.width<1||box.height<1)return
+    const st=getComputedStyle(el)
+    if(st.display==='none'||st.visibility==='hidden')return
+    if(box.right>vw+0.5||box.left<-0.5)wide.push({tag:el.tagName.toLowerCase(),cls:(el.className||'').toString().replace(/\s+/g,'.').slice(0,70),w:Math.round(box.width),l:Math.round(box.left),r:Math.round(box.right)})
+  })
+  wide.sort((a,b)=>b.r-a.r)
+  const text=[].concat(
+    lines.map(l=>l[0]+'：'+l[1]),
+    ['', '超出视口的元素（共 '+wide.length+' 个，最多列 12 个）：'],
+    wide.slice(0,12).map(i=>'  '+i.tag+'.'+i.cls+'  w='+i.w+'  left='+i.l+'  right='+i.r+'（右侧超出 '+(i.r-vw)+'px）'),
+    ['', 'UA：'+navigator.userAgent]
+  ).join('\n')
+  document.getElementById('body').textContent=text
+}
+measure()
+</script>
+</body>
+</html>

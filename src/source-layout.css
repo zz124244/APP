@@ -1,0 +1,85 @@
+/* Runtime adapters only: original page templates and theme utilities own the
+   layout. These rules handle viewport/safe area, accessible inputs and states
+   absent from the static prototypes; they must not replace original card DOM. */
+html{scrollbar-width:none}::-webkit-scrollbar{display:none}
+.reference-surface{width:100%;max-width:480px;margin:0 auto;min-height:100vh;overflow-x:hidden}
+.reference-surface>header[class],.reference-surface>nav[class]{right:auto}
+.reference-surface>header.fixed,.reference-surface>header.absolute,.reference-surface>nav.fixed,.reference-surface>nav.absolute{left:50%;width:100%;max-width:480px;transform:translateX(-50%)}
+.reference-surface>header.relative,.reference-surface>nav.relative{left:auto;right:auto;transform:none}
+.reference-surface>header[class]{top:0}
+.reference-surface>main[class]{padding-top:calc(56px + env(safe-area-inset-top,0px));overflow-x:hidden}
+.reference-overview>main[class]{padding-top:calc(64px + env(safe-area-inset-top,0px))}
+/* Primary-tab headers are in normal flow; avoid adding a second header offset. */
+.reference-home>main[class],.reference-community>main[class],.reference-overview>main[class]{padding-top:8px!important}
+.reference-surface>main>:first-child{margin-top:0!important}
+.reference-surface>main>:last-child{margin-bottom:0!important}
+.reference-overview>nav[class]{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px)}
+.reference-overview main>div>section:first-child>div>div{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.reference-surface button,.reference-surface [role=button]{touch-action:manipulation}
+.reference-surface [role=button][aria-disabled=true]{opacity:.6;cursor:wait}
+.reference-surface [role=button]:focus-visible{outline:2px solid #059669;outline-offset:3px}
+.reference-surface .source-notice{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);max-width:calc(100% - 32px);width:max-content;padding:10px 12px;border-radius:8px;background:#ecfdf5;color:#047857;z-index:150;box-shadow:0 4px 20px #0f172a26}
+.source-upload{position:relative}.source-upload-input{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.source-upload:focus-within,.source-image-picker:focus-within{outline:2px solid #006948;outline-offset:2px}
+.source-proof-preview{max-width:100%;max-height:160px;object-fit:contain}
+.source-feedback{padding:10px;border-radius:4px;background:#e5f5ec;color:#006948}
+.source-forgot{position:relative;font:500 10px/14px 'Hanken Grotesk',system-ui,sans-serif;color:#6d7a72}
+.source-forgot::after{content:'';position:absolute;top:-12px;right:-4px;bottom:-12px;left:-4px}
+/* 480px 下限在横屏（iPhone 横屏视口高 320–430）会把整页顶出屏幕 90px，
+   底部输入框随之落到屏幕外；用 min() 保证下限永远不超过真实视口高度。 */
+.reference-support{height:100vh;height:100dvh;min-height:min(480px,100vh);min-height:min(480px,100dvh);display:flex;flex-direction:column;overflow:hidden}
+.reference-support>main[class]{min-height:0}
+.reference-support>main>div{min-height:0}
+.reference-support .source-chat-stream{min-height:0;-webkit-overflow-scrolling:touch}
+.reference-support .source-message-content{min-width:0;overflow-wrap:anywhere;word-wrap:break-word}
+.source-image-picker{position:relative;cursor:pointer}
+.source-send-button.source-send-label{width:auto;max-width:130px;min-width:40px;height:auto;min-height:40px;padding:8px;font-size:12px}
+.source-history-toggle{font-size:11px;color:#006948;min-height:44px;max-width:110px}
+.source-order-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px;border-top:1px solid #e5eeff;margin-top:16px;padding-top:16px;font:400 11px/16px 'JetBrains Mono',monospace;overflow-wrap:anywhere}
+.source-order-detail dd{text-align:right}
+.reference-orders button:disabled.cursor-not-allowed{opacity:1;cursor:default}
+.reference-surface #purchase-flow-modal{top:0;right:0;bottom:0;left:0}
+.source-amount-input{background:transparent;min-width:0;width:100%;max-width:calc(100% - 56px);border:0;outline:none}
+.source-amount-input:focus{box-shadow:0 1px #059669}
+.source-extra-state{display:flex;flex-direction:column;gap:16px;padding-top:24px}
+.source-extra-state h2{font-size:20px;font-weight:700;line-height:28px}
+.source-extra-state label{display:flex;flex-direction:column;gap:8px;font-size:12px}
+.source-extra-state input{background:#f1f5f9;padding:12px;border-radius:8px;min-height:44px;min-width:0}
+.source-confirm-payment{display:flex;align-items:center;justify-content:center;width:100%;padding:14px;border-radius:12px;min-height:48px;background:#d97706;color:#fff;font-size:14px;font-weight:600;margin-top:12px}
+.reference-surface [data-original-card] h2,.reference-surface [data-original-card] h3{min-width:0;overflow-wrap:anywhere;word-wrap:break-word}
+.reference-surface [data-original-card] .grid>div{min-width:0}
+.reference-surface [data-original-card] .truncate{white-space:normal;overflow-wrap:anywhere;word-wrap:break-word}
+.reference-surface [data-original-card] [role=progressbar]{min-width:0}
+.source-pin-container{position:relative}
+.source-pin-input{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:48px;width:280px;max-width:100%;opacity:0;cursor:text}
+.source-pin-container:focus-within{outline:2px solid #059669;outline-offset:3px;border-radius:12px}
+.reference-surface #pwd-error-tip{height:auto;min-height:24px}
+.reference-withdrawal header,.reference-withdrawal-history header{max-width:480px;left:50%;transform:translateX(-50%)}
+.reference-withdrawal .source-withdrawal-status,.reference-withdrawal-history .source-withdrawal-status{white-space:normal;overflow-wrap:anywhere;max-width:200px}
+.reference-withdrawal-history [data-original-withdrawal]>div:first-child{min-width:0;flex:1}
+.reference-withdrawal-history [data-original-withdrawal]>div:last-child{max-width:48%;overflow-wrap:anywhere;text-align:right}
+
+.reference-identity header{max-width:480px;left:50%;right:auto;transform:translateX(-50%);width:100%}.reference-identity .error{overflow-wrap:anywhere}.reference-identity [data-original-identity]:focus-within{outline:2px solid #d97706;outline-offset:2px}
+
+.reference-transfer header{max-width:480px;left:50%;transform:translateX(-50%);width:100%}.reference-transfer #pinModalContent{max-width:480px}.reference-transfer #pinModalOverlay{overflow-y:auto}.reference-transfer .error{overflow-wrap:anywhere}.reference-transfer main>section{margin:16px}.reference-transfer #verifiedCard input,.reference-transfer #recipientInput{min-width:0}.reference-transfer .source-pin-container{position:relative}.reference-transfer .source-pin-input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0}
+
+.reference-transfer #balanceDisplay{min-width:0;overflow-wrap:anywhere}.reference-transfer [data-original-transfer-record]>div>div:first-child{flex:1;min-width:0}.reference-transfer [data-original-transfer-record]>div>div:last-child{max-width:52%;min-width:0;overflow-wrap:anywhere}.reference-transfer [data-original-transfer-record] span{overflow-wrap:anywhere}
+
+.reference-transfer #balanceDisplay,.reference-transfer [data-original-transfer-record] span{word-wrap:break-word;word-break:break-all}
+
+.reference-entries header{max-width:480px;left:50%;transform:translateX(-50%);width:100%}.reference-entries .tx-card>div>div:first-child{min-width:0;flex:1}.reference-entries .tx-card>div>div:last-child{min-width:0;max-width:48%;overflow-wrap:anywhere;word-wrap:break-word;word-break:break-all}.reference-entries .tx-card .font-label-caps{overflow-wrap:anywhere;word-wrap:break-word}.reference-entries .tx-card .font-label-numeric-sm{white-space:normal}.reference-entries .error{overflow-wrap:anywhere}
+.reference-team header,.reference-invitation header{max-width:480px;left:50%;transform:translateX(-50%);width:100%}.reference-team .grid>div{min-width:0}.reference-team .grid span{overflow-wrap:anywhere;word-wrap:break-word}.reference-team #team-members-section button{white-space:normal}.reference-team #team-members-section .font-label-numeric-sm{white-space:normal}.reference-team #invite-code-val{overflow-wrap:anywhere}.reference-team [role=alert] button,.reference-invitation [role=alert] button{padding:10px;text-decoration:underline}.reference-invitation #invite-code{overflow-wrap:anywhere}.reference-invitation button{min-height:44px}.reference-invitation #invite-link{min-width:0}
+.reference-team button.h-9{flex-shrink:0;white-space:nowrap}.reference-team .truncate{min-width:0}
+.reference-password header{max-width:480px;left:50%;transform:translateX(-50%);width:100%}.reference-password label,.reference-password p,.reference-password button{overflow-wrap:anywhere;word-wrap:break-word}.reference-password #tab-login-btn,.reference-password #tab-pay-btn{min-height:44px;min-width:0}.reference-password input{min-width:0}.reference-password #global-toast{background:#eff4ff}.reference-password main button:not(.absolute){min-height:44px}.reference-password button.absolute{width:44px;min-height:44px;right:0}.reference-password #login-error-banner{min-width:0}
+.reference-login #recovery-phone{min-width:0}.reference-password #pane-login button{min-height:48px;height:auto;padding-top:12px;padding-bottom:12px}.reference-support [name=context]{overflow-wrap:anywhere}.reference-support input[readonly]{max-width:100%;min-width:0}.reference-support button{overflow-wrap:anywhere;word-wrap:break-word}
+
+/* Long unbreakable tokens (amounts, addresses, hashes, order numbers) must stay inside their
+   own box. Measured on iPhone widths before this block existed: 提现记录 320pt -> the address
+   row ran 81px past the right screen edge (375pt -> 25.7px, 390pt -> 10.7px) and was clipped by
+   main's overflow-x:hidden. Row columns get min-width:0 so they can shrink, and the copyable
+   address/hash keeps one line with an ellipsis instead of wrapping one character per line. */
+.reference-surface .font-label-numeric-lg,.reference-surface .font-label-numeric-md,.reference-surface .font-label-numeric-sm,
+.profile-page .font-label-numeric-lg,.profile-page .font-label-numeric-md,.profile-page .font-label-numeric-sm{min-width:0;overflow-wrap:anywhere;word-wrap:break-word}
+.reference-surface [data-original-withdrawal] .flex-col,.reference-surface [data-original-entry] .flex-col,.reference-surface [data-original-order] .flex-col,.reference-surface [data-original-transfer-record] .flex-col,.reference-surface [data-original-member] .flex-col{min-width:0;max-width:100%}
+.reference-surface [data-original-withdrawal] .flex-col>*,.reference-surface [data-original-entry] .flex-col>*,.reference-surface [data-original-order] .flex-col>*,.reference-surface [data-original-transfer-record] .flex-col>*,.reference-surface [data-original-member] .flex-col>*{min-width:0;max-width:100%}
+.reference-surface [data-original-withdrawal] .select-all,.reference-surface [data-original-entry] .select-all,.reference-surface [data-original-order] .select-all,.reference-surface [data-original-transfer-record] .select-all,.reference-surface [data-original-member] .select-all{display:block;min-width:0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

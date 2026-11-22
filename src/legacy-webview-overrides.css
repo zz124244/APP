@@ -1,0 +1,7 @@
+#app .reference-lottery #wheel>div[style].pointer-events-none{top:0}
+.reference-lottery #wheel>div[style].origin-center{right:0}
+.reference-lottery #wheel>div[style].flex-col{bottom:0}
+.reference-lottery #wheel>div[style].items-center{left:0;transform-origin:center center}
+#app .reference-login input[type=tel],#app .reference-login input[type=password],#app .reference-login input:not([type]){font-size:16px!important;line-height:22px!important;-webkit-text-size-adjust:100%}
+#app input.font-body-md,#app input.text-body-md,#app input.font-label-numeric-md,#app input.text-label-numeric-md,#app textarea.font-body-md,#app textarea.text-body-md{font-size:16px!important;line-height:22px!important;-webkit-text-size-adjust:100%}
+#app input:not([type=file]):not([type=checkbox]):not([type=radio]):not(.source-amount-input):not(.source-pin-input):not(.font-label-numeric-lg):not(.text-label-numeric-lg):not(.font-headline-lg-mobile):not(.text-headline-lg-mobile),#app textarea{font-size:16px!important;line-height:22px!important;-webkit-text-size-adjust:100%}
