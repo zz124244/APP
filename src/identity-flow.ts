@@ -1,0 +1,17 @@
+export type IdentityDraft={key:string;front_file_id?:string;back_file_id?:string;expected_application_id:string;expected_version:string}
+export type IdentityState={status:'not_submitted'|'pending'|'approved'|'rejected';application_id:string;version:string;name_masked:string;number_masked:string;front_file_id:string|null;back_file_id:string|null;reject_reason:string|null}
+export function identityRecoveryDecision(row:{status:string;retryable?:boolean}){return row.status==='succeeded'||row.status==='failed'&&!row.retryable?'clear':row.retryable?'retry':'wait'}
+export function identityFileId(state:IdentityState,draft:IdentityDraft|null,uploaded:{front:string;back:string},side:'front'|'back'):string{const key=side==='front'?'front_file_id':'back_file_id';return (state.status==='pending'||state.status==='approved'?state[key]:draft?.[key]||uploaded[side]||state[key])||''}
+export function readIdentityDraft(raw:string|null):IdentityDraft|null{try{const d=JSON.parse(raw||'null');if(!d||![3,5].includes(Object.keys(d).length)||Object.keys(d).some(k=>!['key','front_file_id','back_file_id','expected_application_id','expected_version'].includes(k))||typeof d.key!=='string'||!/^[a-f0-9]{32}$/.test(d.key))return null;if('front_file_id' in d||'back_file_id' in d){for(const k of ['front_file_id','back_file_id'])if(typeof d[k]!=='string'||!/^[1-9][0-9]{0,19}$/.test(d[k]))return null}for(const k of ['expected_application_id','expected_version'])if(typeof d[k]!=='string'||!/^(0|[1-9][0-9]{0,19})$/.test(d[k]))return null;return d}catch{return null}}
+export async function validateIdentityImage(file:Blob):Promise<boolean>{
+ if(file.size===0||file.size>10485760)return false
+ const head=file.slice(0,12),bytes=new Uint8Array(typeof head.arrayBuffer==='function'?await head.arrayBuffer():await new Promise<ArrayBuffer>((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result as ArrayBuffer);reader.onerror=()=>reject(Error('image_read_failed'));reader.readAsArrayBuffer(head)}))
+ return bytes.length>=8&&[137,80,78,71,13,10,26,10].every((v,i)=>bytes[i]===v)||bytes.length>=3&&bytes[0]===255&&bytes[1]===216&&bytes[2]===255
+}
+export async function executeIdentitySubmission<T>(o:{draft:IdentityDraft|null;name:string;number:string;expectedId:string;expectedVersion:string;keyFactory:()=>string;active:()=>boolean;upload?:(side:'front'|'back')=>Promise<string>;persist:(d:IdentityDraft)=>void;post:(body:Record<string,string>,key:string)=>Promise<T>}):Promise<T|null>{
+ if(!o.active())return null;let draft=o.draft
+ if(!draft){draft={key:o.keyFactory(),expected_application_id:o.expectedId,expected_version:o.expectedVersion};if(o.upload){const front=await o.upload('front');if(!o.active())return null;const back=await o.upload('back');if(!o.active())return null;draft.front_file_id=front;draft.back_file_id=back}}
+ o.persist(draft);if(!o.active())return null
+ return o.post({real_name:o.name,id_number:o.number,...(draft.front_file_id&&draft.back_file_id?{front_file_id:draft.front_file_id,back_file_id:draft.back_file_id}:{}),expected_application_id:draft.expected_application_id,expected_version:draft.expected_version},draft.key)
+}
+export async function executeIdentityRestart<T>(o:{key:string;active:()=>boolean;post:(key:string)=>Promise<T>;clear:(key:string)=>void}):Promise<T|null>{if(!o.active())return null;const result=await o.post(o.key);if(!o.active())return null;o.clear(o.key);return result}

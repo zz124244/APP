@@ -1,0 +1,42 @@
+import type {Locale} from './i18n'
+const words={
+ identity:['双方都需要先完成实名认证。','Both users must complete identity verification.','双方の本人確認が必要です。','양측 모두 본인 인증이 필요합니다.','Les deux utilisateurs doivent être identifiés.','Beide Nutzer müssen ihre Identität bestätigen.','雙方都需要先完成實名認證。'],
+ cooldown:['支付密码重置后24小时内暂不能内转。','Transfers pause for 24 hours after a payment PIN reset.','支払暗証番号リセット後24時間は送金できません。','결제 비밀번호 재설정 후 24시간 동안 이체할 수 없습니다.','Les transferts sont suspendus 24 heures après la réinitialisation du code.','Nach Zurücksetzen der Zahlungs-PIN sind Transfers 24 Stunden gesperrt.','支付密碼重置後24小時內暫不能內轉。'],
+ funds:['可提现余额不足，请修改转账金额。','Withdrawable balance is insufficient. Change the amount.','出金可能残高が不足しています。金額を変更してください。','출금 가능 잔액이 부족합니다. 금액을 변경하세요.','Solde retirable insuffisant. Modifiez le montant.','Auszahlbares Guthaben reicht nicht aus. Betrag ändern.','可提現餘額不足，請修改轉賬金額。'],
+ title:['用户转账','User transfer','ユーザー送金','사용자 이체','Transfert utilisateur','Nutzertransfer','用戶轉賬'],
+ balance:['可提现转账余额','Transferable balance','送金可能残高','이체 가능 잔액','Solde transférable','Übertragbares Guthaben','可提現轉賬餘額'],
+ instant:['即时到账 · 0手续费','Instant credit · No fee','即時反映・手数料なし','즉시 입금 · 수수료 없음','Crédit immédiat · Sans frais','Sofortige Gutschrift · Gebührenfrei','即時到賬 · 0手續費'],
+ internal:['九合生态内部互转','JIUHE internal transfer','JIUHE内の送金','JIUHE 내부 이체','Transfert interne JIUHE','Interner JIUHE-Transfer','九合生態內部互轉'],
+ gas:['免Gas · 秒级确认','No gas · Fast confirmation','ガス不要・迅速確認','가스 없음 · 빠른 확인','Sans gas · Confirmation rapide','Ohne Gas · Schnelle Bestätigung','免Gas · 秒級確認'],
+ recipient:['收款方账号','Recipient account','受取人アカウント','수취인 계정','Compte bénéficiaire','Empfängerkonto','收款方賬號'],
+ phone:['对方注册号码','Registered phone','登録電話番号','등록 전화번호','Téléphone enregistré','Registrierte Telefonnummer','對方註冊號碼'],
+ uid:['对方 UID（必填）','Recipient UID (required)','受取人UID（必須）','수취인 UID (필수)','UID bénéficiaire (obligatoire)','Empfänger-UID (Pflicht)','對方 UID（必填）'],
+ amount:['转账金额','Transfer amount','送金額','이체 금액','Montant du transfert','Transferbetrag','轉賬金額'],
+ available:['可用','Available','利用可能','사용 가능','Disponible','Verfügbar','可用'],
+ all:['全部','All','全額','전액','Tout','Alles','全部'],
+ minimum:['单笔最低100 USDT，无手续费','Minimum 100 USDT. No fee.','最低100 USDT・手数料なし','최소 100 USDT, 수수료 없음','Minimum 100 USDT. Sans frais.','Mindestens 100 USDT. Gebührenfrei.','單筆最低100 USDT，無手續費'],
+ confirm:['确认转账','Confirm transfer','送金を確認','이체 확인','Confirmer le transfert','Transfer bestätigen','確認轉賬'],
+ payment:['请输入支付密码','Enter payment PIN','支払暗証番号を入力','결제 비밀번호 입력','Saisir le code de paiement','Zahlungs-PIN eingeben','請輸入支付密碼'],
+ debit:['转账扣款金额','Amount to debit','引落金額','차감 금액','Montant débité','Abbuchungsbetrag','轉賬扣款金額'],
+ protocol:['九合资产链下安全互转协议','JIUHE off-chain transfer protocol','JIUHEオフチェーン送金規約','JIUHE 오프체인 이체 약정','Protocole de transfert hors chaîne JIUHE','JIUHE-Protokoll für Off-Chain-Transfers','九合資產鏈下安全互轉協議'],
+ rule1:['互转仅支持（可提余额），最低100USDT起转账。','Internal transfers settle off-chain with no gas fee and credit the recipient’s withdrawable account immediately.','内部送金はオフチェーンで決済され、ガス手数料なしで受取人の出金可能口座に即時反映されます。','내부 이체는 오프체인으로 정산되며 가스 수수료 없이 수취인의 출금 가능 계정에 즉시 반영됩니다.','Les transferts internes sont réglés hors chaîne, sans gas, et créditent immédiatement le compte retirable du bénéficiaire.','Interne Transfers werden ohne Gas-Gebühr off-chain abgerechnet und sofort dem auszahlbaren Konto gutgeschrieben.','平台內互轉為鏈下清算撮合，不消耗公鏈Gas費，發起後即時到達對方可提現賬戶。'],
+ rule2:['互转不收取任何手续费。转账前请核对收款账号（手机号/UID），转错账户，平台不支持撤回。请勿频繁、来回互转。平台互转功能是保障双方权益，请谨慎转账，如有异议，请联系在线客服处理！','Check the recipient UID. Once booked, a transfer cannot be reversed or recovered by freezing.','受取人UIDを確認してください。記帳確定後は取消や凍結による回収はできません。','수취인 UID를 확인하세요. 기록 확정 후 취소하거나 동결로 회수할 수 없습니다.','Vérifiez l’UID. Une fois comptabilisé, le transfert ne peut être annulé ni récupéré par gel.','Prüfen Sie die Empfänger-UID. Gebuchte Transfers können weder storniert noch durch Sperrung zurückgeholt werden.','請核對收款人 UID，轉賬一旦系統記賬確認，不可撤銷或凍結追回。'],
+ rule3:["双方均须完成实名认证；提交前请核对收款手机号、UID和金额。","Both users must verify their identity. Check the recipient phone, UID and amount before submitting.","双方の本人確認が必要です。送信前に受取人の電話番号、UID、金額をご確認ください。","양측 모두 본인 인증이 필요합니다. 제출 전 수취인의 전화번호, UID와 금액을 확인하세요.","Les deux utilisateurs doivent être identifiés. Vérifiez le téléphone, l’UID et le montant avant de valider.","Beide Nutzer müssen ihre Identität bestätigen. Vor dem Senden Telefonnummer, UID und Betrag prüfen.","雙方均須完成實名認證；提交前請核對收款手機號、UID和金額。"],
+ motto:['长期 · 专注 · 利他','Long term · Focus · Altruism','長期・集中・利他','장기 · 집중 · 이타','Long terme · Concentration · Altruisme','Langfristigkeit · Fokus · Gemeinsinn','長期 · 專注 · 利他'],
+ success:['转账成功','Transfer completed','送金完了','이체 완료','Transfert effectué','Transfer abgeschlossen','轉賬成功'],
+ close:['关闭','Close','閉じる','닫기','Fermer','Schließen','關閉'],
+ history:['转账记录','Transfer history','送金履歴','이체 내역','Historique des transferts','Transferverlauf','轉賬記錄'],
+ empty:['暂无转账记录','No transfers yet','送金履歴はありません','이체 내역 없음','Aucun transfert','Noch keine Transfers','暫無轉賬記錄'],
+ more:['加载更多','Load more','さらに表示','더 보기','Afficher plus','Mehr laden','載入更多'],
+ recover:['原请求结果待核实，请查询原单或用原请求重试。','Check the original result or retry the original request.','元の結果を照会するか同じリクエストで再試行してください。','원래 결과를 조회하거나 동일한 요청으로 재시도하세요.','Vérifiez le résultat initial ou réessayez la même demande.','Ursprüngliches Ergebnis prüfen oder dieselbe Anfrage wiederholen.','原請求結果待核實，請查詢原單或用原請求重試。'],
+ check:['查询原单','Check result','結果照会','결과 조회','Vérifier le résultat','Ergebnis prüfen','查詢原單'],
+ invalid:['请填写正确的手机号、UID和不少于100 USDT的金额。','Enter a valid phone, UID and amount of at least 100 USDT.','正しい電話番号・UID・100 USDT以上の金額を入力してください。','올바른 전화번호, UID 및 100 USDT 이상의 금액을 입력하세요.','Saisissez un téléphone, un UID et un montant d’au moins 100 USDT valides.','Gültige Telefonnummer, UID und mindestens 100 USDT eingeben.','請填寫正確的手機號、UID和不少於100 USDT的金額。'],
+ failed:['本次未转账，请重新核对后提交。','Transfer not completed. Check and submit again.','送金されませんでした。確認して再送信してください。','이체되지 않았습니다. 확인 후 다시 제출하세요.','Transfert non effectué. Vérifiez puis réessayez.','Transfer nicht ausgeführt. Prüfen und erneut senden.','本次未轉賬，請重新核對後提交。'],
+ storage:['无法保存恢复信息，未提交转账，请检查浏览器存储。','Recovery data could not be saved. Transfer not submitted. Check browser storage.','復旧情報を保存できないため未送信です。ブラウザ保存領域を確認してください。','복구 정보를 저장할 수 없어 제출하지 않았습니다. 브라우저 저장소를 확인하세요.','Impossible de sauvegarder la reprise. Transfert non envoyé. Vérifiez le stockage.','Wiederherstellungsdaten nicht gespeichert. Transfer nicht gesendet. Browserspeicher prüfen.','無法儲存恢復資訊，未提交轉賬，請檢查瀏覽器儲存。'],
+ frozen:['被冻结的收款账号将收到冻结资金，解冻后才能使用。','Frozen recipients receive restricted funds, usable after unfreezing.','凍結中の受取人への資金は解除後に利用可能になります。','동결 계정의 수취 금액은 동결 해제 후 사용할 수 있습니다.','Les fonds reçus par un compte gelé seront utilisables après dégel.','Gesperrte Empfänger können eingegangene Gelder erst nach Entsperrung nutzen.','被凍結的收款賬號將收到凍結資金，解凍後才能使用。'],
+ visibility:['显示或隐藏余额','Show or hide balance','残高表示切替','잔액 표시 전환','Afficher ou masquer le solde','Guthaben anzeigen/verbergen','顯示或隱藏餘額'],
+ clear:['清空金额','Clear amount','金額をクリア','금액 지우기','Effacer le montant','Betrag löschen','清空金額']
+} as const
+export type TransferTextKey=keyof typeof words
+const index:Record<Locale,number>={'zh-CN':0,en:1,ja:2,ko:3,fr:4,de:5,'zh-TW':6}
+export function transferText(locale:Locale,key:TransferTextKey){return words[key][index[locale]]}
