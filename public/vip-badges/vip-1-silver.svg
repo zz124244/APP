@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="104" viewBox="0 0 96 104" role="img" aria-labelledby="vip1-title">
-<title id="vip1-title">VIP1 白银</title>
-<defs><linearGradient id="vip1-metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7fb"/><stop offset=".48" stop-color="#bac6d5"/><stop offset="1" stop-color="#f4f7fb"/></linearGradient></defs>
-<path d="M48 5 82 18v28c0 24-15 42-34 52C29 88 14 70 14 46V18Z" fill="url(#vip1-metal)" stroke="#52657c" stroke-width="2"/>
-<path d="M48 12 75 22v24c0 19-11 34-27 44-16-10-27-25-27-44V22Z" fill="white" fill-opacity=".42" stroke="white" stroke-opacity=".88" stroke-width="1.5"/>
-<path d="M48 15 72 24v20c0 16-8 29-24 40Z" fill="#52657c" fill-opacity=".045"/>
-<g fill="#52657c" stroke="#52657c" stroke-width="1.5" stroke-linejoin="round"><path d="M48 27 53 40 66 45 53 50 48 63 43 50 30 45 43 40Z"/></g>
-<circle cx="48" cy="79" r="1.8" fill="#52657c"/></svg>
