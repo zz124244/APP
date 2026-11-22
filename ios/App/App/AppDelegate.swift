@@ -82,7 +82,7 @@ class AppBridgeViewController:CAPBridgeViewController {
    scrollView.bouncesZoom = false
    scrollView.bounces = false
    scrollView.alwaysBounceHorizontal = false
-   scrollView.directionalLockEnabled = true
+        scrollView.isDirectionalLockEnabled = true
   }
   bridge?.registerPluginInstance(SecureSessionPlugin())
  }
